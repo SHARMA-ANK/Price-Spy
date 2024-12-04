@@ -9,7 +9,7 @@ import PriceInfoCard from '@/app/components/PriceInfoCard'
 import ProductCard from '@/app/components/ProductCard'
 import Modal from '@/app/components/Modal'
 
-const ProductDetails = async({ params }: { params: { id: string } }) => {
+const ProductDetails = async({ params }: { params: Promise<{ id: string }> }) => {
   const resolvedParams = await params; // Await the params
   const { id } = resolvedParams; 
   const product:Product=await getProductById(id);
