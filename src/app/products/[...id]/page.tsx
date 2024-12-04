@@ -8,10 +8,10 @@ import { formatNumber } from '@/app/lib/actions/utils'
 import PriceInfoCard from '@/app/components/PriceInfoCard'
 import ProductCard from '@/app/components/ProductCard'
 import Modal from '@/app/components/Modal'
-type props={
-  params:{id:string}
-}
-const ProductDetails = async({params:{id}}:props) => {
+
+const ProductDetails = async({ params }: { params: { id: string } }) => {
+  const resolvedParams = await params; // Await the params
+  const { id } = resolvedParams; 
   const product:Product=await getProductById(id);
   if(!product) redirect('/');
   const similarProducts=await getSimilarProducts(id);
