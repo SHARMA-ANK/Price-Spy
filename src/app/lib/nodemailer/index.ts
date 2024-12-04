@@ -82,19 +82,19 @@ export async function generateEmailBody(
 }
 
 const transporter = nodemailer.createTransport({
-  pool: true,
-  service: 'hotmail',
-  port: 587,
+  service: "Gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
-    user: 'ankit_rambo@outlook.com',
+    user: "ankitsharma67891@gmail.com",
     pass: process.env.EMAIL_PASSWORD,
   },
-  maxConnections: 1
-})
+});
 
 export const sendEmail = async (emailContent: EmailContent, sendTo: string[]) => {
   const mailOptions = {
-    from: 'ankit_rambo@outlook.com',
+    from: 'ankitsharma67891@gmail.com',
     to: sendTo,
     html: emailContent.body,
     subject: emailContent.subject,
